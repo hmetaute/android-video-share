@@ -9,7 +9,6 @@ import android.media.CamcorderProfile;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,30 +21,30 @@ public class MainActivity extends Activity {
 
 	private static final String TAG = "Record";
 
-	MediaRecorder mediarecorder;
-
 	private Camera mCamera;
     private CameraPreview mPreview;
-    MediaRecorder mMediaRecorder;
+    private MediaRecorder mMediaRecorder;
     private boolean isRecording = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.videorecorderlayout);
-
+        
+        final FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+        final Button captureButton = (Button) findViewById(R.id.button_capture);
+        final Button playButton = (Button) findViewById(R.id.button_play);
+        
+        
         // Create an instance of Camera
         mCamera = getCameraInstance();
-
         // Create our Preview view and set it as the content of our activity.
         mPreview = new CameraPreview(this, mCamera);
-        final FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+        
         preview.addView(mPreview);
         // Add a listener to the Capture button
-        final Button captureButton = (Button) findViewById(R.id.button_capture);
         captureButton.setOnClickListener(
             new View.OnClickListener() {
-//            	@Override
                 public void onClick(View v) {
                     if (isRecording) {
                         // stop recording and release camera
@@ -76,7 +75,6 @@ public class MainActivity extends Activity {
             }
         );
         
-        final Button playButton = (Button) findViewById(R.id.button_play);
         playButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
@@ -102,7 +100,8 @@ public class MainActivity extends Activity {
     }
 	
     /** A safe way to get an instance of the Camera object. */
-    public static Camera getCameraInstance(){
+    public Camera getCameraInstance(){
+    	releaseCamera();
         Camera c = null;
         try {
             c = Camera.open(); // attempt to get a Camera instance
@@ -114,8 +113,6 @@ public class MainActivity extends Activity {
     }
     
     private boolean prepareVideoRecorder(){
-
-//        mCamera = getCameraInstance();
         mMediaRecorder = new MediaRecorder();
 
         // Step 1: Unlock and set camera to MediaRecorder
