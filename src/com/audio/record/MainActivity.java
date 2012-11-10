@@ -1,16 +1,22 @@
 package com.audio.record;
 
+import java.io.File;
 import java.io.IOException;
 
 import android.app.Activity;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.net.Uri;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 public class MainActivity extends Activity {
 
@@ -33,7 +39,7 @@ public class MainActivity extends Activity {
 
         // Create our Preview view and set it as the content of our activity.
         mPreview = new CameraPreview(this, mCamera);
-        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+        final FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         preview.addView(mPreview);
         // Add a listener to the Capture button
         final Button captureButton = (Button) findViewById(R.id.button_capture);
@@ -69,6 +75,30 @@ public class MainActivity extends Activity {
                 }
             }
         );
+        
+        final Button playButton = (Button) findViewById(R.id.button_play);
+        playButton.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				mCamera.stopPreview();
+				preview.removeAllViews();
+				final VideoView video = new VideoView(MainActivity.this);
+				video.setVideoURI(Uri.fromFile(new File("/sdcard/someexamplevideo.mp4")));
+				video.setMediaController(new MediaController(MainActivity.this));
+				video.requestFocus();
+				video.start();
+				video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+					
+					public void onCompletion(MediaPlayer mp) {
+						preview.removeAllViews();
+						preview.addView(mPreview);
+					}
+				});
+				preview.addView(video);
+//				MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.this, Uri.fromFile(new File("/sdcard/someexamplevideo.mp4")));
+//				mediaPlayer.start();
+			}
+		});
     }
 	
     /** A safe way to get an instance of the Camera object. */
