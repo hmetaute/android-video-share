@@ -9,30 +9,137 @@ package com.audio.record;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarButtonStyle=0x7f010001;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarStyle=0x7f010000;
+    }
+    public static final class color {
+        public static final int black=0x7f040001;
+        public static final int black_overlay=0x7f040000;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int layout01_01=0x7f020001;
+        public static final int layout01_02=0x7f020002;
+        public static final int layout01_03=0x7f020003;
+        public static final int layout01_04=0x7f020004;
+        public static final int layout01_05=0x7f020005;
+        public static final int layout01_06=0x7f020006;
+        public static final int layout01_07=0x7f020007;
+        public static final int layout01_08=0x7f020008;
+        public static final int layout01_09=0x7f020009;
+        public static final int layout01_10=0x7f02000a;
+        public static final int layout01_11=0x7f02000b;
+        public static final int layout01_12=0x7f02000c;
+        public static final int layout01_13=0x7f02000d;
+        public static final int layout01_14=0x7f02000e;
+        public static final int layout01_15=0x7f02000f;
+        public static final int layout01_16=0x7f020010;
+        public static final int layout01_17=0x7f020011;
+        public static final int layout01_18=0x7f020012;
+        public static final int layout01_19=0x7f020013;
+        public static final int layout01_20=0x7f020014;
+        public static final int spacer=0x7f020015;
     }
     public static final class id {
-        public static final int auth_button=0x7f050003;
-        public static final int button_capture=0x7f050005;
-        public static final int button_play=0x7f050006;
-        public static final int camera_preview=0x7f050004;
-        public static final int record=0x7f050000;
-        public static final int stop=0x7f050001;
-        public static final int upload_button=0x7f050007;
-        public static final int videosurface=0x7f050002;
+        public static final int ImageView01=0x7f07000e;
+        public static final int auth_button=0x7f070015;
+        public static final int button_capture=0x7f070018;
+        public static final int button_mail=0x7f070016;
+        public static final int button_play=0x7f070019;
+        public static final int camera_preview=0x7f070017;
+        public static final int fullscreen_content=0x7f070000;
+        public static final int fullscreen_content_controls=0x7f070001;
+        public static final int imageView1=0x7f070003;
+        public static final int imageView10=0x7f070010;
+        public static final int imageView11=0x7f070011;
+        public static final int imageView2=0x7f070004;
+        public static final int imageView3=0x7f070005;
+        public static final int imageView4=0x7f070006;
+        public static final int imageView5=0x7f070007;
+        public static final int imageView6=0x7f070008;
+        public static final int imageView7=0x7f07000a;
+        public static final int imageView8=0x7f07000b;
+        public static final int imageView9=0x7f07000d;
+        public static final int record=0x7f070012;
+        public static final int stop=0x7f070013;
+        public static final int tableRow1=0x7f070002;
+        public static final int tableRow2=0x7f070009;
+        public static final int tableRow3=0x7f07000c;
+        public static final int tableRow4=0x7f07000f;
+        public static final int upload_button=0x7f07001a;
+        public static final int videosurface=0x7f070014;
     }
     public static final class layout {
-        public static final int audiorecorderlayout=0x7f030000;
-        public static final int main=0x7f030001;
-        public static final int recording_screen=0x7f030002;
-        public static final int videorecorderlayout=0x7f030003;
+        public static final int activity_record_playback=0x7f030000;
+        public static final int audiorecorderlayout=0x7f030001;
+        public static final int main=0x7f030002;
+        public static final int recording_screen=0x7f030003;
+        public static final int videorecorderlayout=0x7f030004;
     }
     public static final class string {
-        public static final int app_name=0x7f040001;
-        public static final int hello=0x7f040000;
-        public static final int recod=0x7f040003;
-        public static final int stahp=0x7f040002;
+        public static final int app_name=0x7f050001;
+        public static final int dummy_content=0x7f050004;
+        public static final int hello=0x7f050000;
+        public static final int recod=0x7f050003;
+        public static final int stahp=0x7f050002;
+        public static final int title_activity_record_playback=0x7f050005;
     }
+    public static final class style {
+        /**  Backward-compatible version of ?android:attr/buttonBarStyle 
+         */
+        public static final int ButtonBar=0x7f060001;
+        /**  Backward-compatible version of ?android:attr/buttonBarButtonStyle 
+         */
+        public static final int ButtonBarButton=0x7f060002;
+        public static final int FullscreenActionBarStyle=0x7f060003;
+        public static final int FullscreenTheme=0x7f060000;
+    }
+    public static final class styleable {
+        /** 
+         Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels.
+    
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarButtonStyle com.audio.record:buttonBarButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarStyle com.audio.record:buttonBarStyle}</code></td><td></td></tr>
+           </table>
+           @see #ButtonBarContainerTheme_buttonBarButtonStyle
+           @see #ButtonBarContainerTheme_buttonBarStyle
+         */
+        public static final int[] ButtonBarContainerTheme = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.audio.record.R.attr#buttonBarButtonStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:buttonBarButtonStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.audio.record.R.attr#buttonBarStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:buttonBarStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
+    };
 }

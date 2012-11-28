@@ -1,0 +1,155 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".RecordPlaybackActivity" >
+
+    <!--
+         The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc.
+    -->
+
+    <TextView
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:keepScreenOn="true"
+        android:text="@string/dummy_content"
+        android:textColor="#33b5e5"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <!--
+         This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows.
+    -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_overlay"
+        android:fitsSystemWindows="true" >
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+
+
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="258px"
+                    android:layout_height="800px"
+                    android:src="@drawable/layout01_01" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="27px"
+                    android:layout_height="800px" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="707px"
+                    android:layout_height="142px"
+                    android:src="@drawable/layout01_03" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="31px"
+                    android:layout_height="800px"
+                    android:src="@drawable/layout01_04" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="257px"
+                    android:layout_height="557px"
+                    android:src="@drawable/layout01_05" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="1px"
+                    android:layout_height="374px"
+                    android:src="@drawable/spacer" />
+                
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/layout01_06" />
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/spacer" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/layout01_07" />
+
+                <ImageView
+                    android:id="@+id/ImageView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/spacer" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/layout01_08" />
+
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/spacer" />
+
+            </TableRow>
+        </TableLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

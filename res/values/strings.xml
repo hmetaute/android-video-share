@@ -2,8 +2,10 @@
 <resources>
 
     <string name="hello">Hello World, AudioRecorder!</string>
-    <string name="app_name">RecordingSample</string>
+    <string name="app_name">De boca en boca</string>
     <string name="stahp">stahp!</string>
     <string name="recod">record!</string>
+    <string name="dummy_content">Copntenido\nmuestra</string>
+    <string name="title_activity_record_playback">RecordPlaybackActivity</string>
 
 </resources>

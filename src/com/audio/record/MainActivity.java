@@ -71,7 +71,14 @@ public class MainActivity extends Activity {
         final FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         final Button captureButton = (Button) findViewById(R.id.button_capture);
         final Button playButton = (Button) findViewById(R.id.button_play);
+        final Button mailButton =  (Button) findViewById(R.id.button_mail);
         
+        mailButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				sendEmail();				
+			}
+		});
         
         // Create an instance of Camera
         mCamera = getCameraInstance();
@@ -206,7 +213,7 @@ public class MainActivity extends Activity {
     	releaseCamera();
         Camera c = null;
         try {
-            c = Camera.open(); // attempt to get a Camera instance
+            c = Camera.open(1); // attempt to get a Camera instance (the front cammera)
         }
         catch (Exception e){
             // Camera is not available (in use or does not exist)
@@ -215,6 +222,7 @@ public class MainActivity extends Activity {
     }
     
     private boolean prepareVideoRecorder(){
+    	int MAX_TIME = 60;
         mMediaRecorder = new MediaRecorder();
 
         // Step 1: Unlock and set camera to MediaRecorder
@@ -224,9 +232,14 @@ public class MainActivity extends Activity {
         // Step 2: Set sources
         mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
         mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-
+        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
+//        mMediaRecorder.setMaxDuration((int) MAX_TIME); 
+//        mMediaRecorder.setVideoSize(320, 240); 
+//        mMediaRecorder.setVideoFrameRate(15); 
         // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
-        mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
+//        mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
 
         // Step 4: Set output file
         mMediaRecorder.setOutputFile(mCameraFileName);
@@ -388,6 +401,22 @@ public class MainActivity extends Activity {
     private void showToast(String msg) {
         Toast error = Toast.makeText(this, msg, Toast.LENGTH_LONG);
         error.show();
+    }
+    
+    
+    private void sendEmail(){
+    	Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
+        emailIntent.setType("video/mp4");
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] 
+        {"hernan.metaute@gmail.com"}); 
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, 
+        "Test Subject"); 
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, 
+        "go on read the emails"); 
+        Log.v(getClass().getSimpleName(), "sPhotoUri=" + Uri.parse("file://"+ mCameraFileName));
+        emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+ mCameraFileName));
+        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+        showToast("Sending email");
     }
     
     
