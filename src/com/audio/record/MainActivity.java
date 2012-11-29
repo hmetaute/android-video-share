@@ -261,17 +261,20 @@ public class MainActivity extends Activity {
         // Step 2: Set sources
         mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
         mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-        mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
+        mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_480P));
+        mMediaRecorder.setOutputFile(mCameraFileName);
 //        mMediaRecorder.setMaxDuration((int) MAX_TIME); 
-//        mMediaRecorder.setVideoSize(320, 240); 
-//        mMediaRecorder.setVideoFrameRate(15); 
+//        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        
+        
+//        mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+//        mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
+//        mMediaRecorder.setVideoSize(480, 320); 
+//        mMediaRecorder.setVideoFrameRate(15);
         // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
         //mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
 
         // Step 4: Set output file
-        mMediaRecorder.setOutputFile(mCameraFileName);
 
         // Step 5: Set the preview output
         mMediaRecorder.setPreviewDisplay(mPreview.getHolder().getSurface());
