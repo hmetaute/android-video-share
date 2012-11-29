@@ -42,6 +42,8 @@ public class MainActivity extends Activity {
     private MediaRecorder mMediaRecorder;
     private boolean isRecording = false;
     
+    FrameLayout preview;
+    
     /* upload to dropbox variables */
     
     final static private String APP_KEY = "vel5sdq4n7pj1pm";
@@ -68,10 +70,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.videorecorderlayout);
         
-        final FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+        //final FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         final Button captureButton = (Button) findViewById(R.id.button_capture);
         final Button playButton = (Button) findViewById(R.id.button_play);
         final Button mailButton =  (Button) findViewById(R.id.button_mail);
+        preview = (FrameLayout) findViewById(R.id.camera_preview);
         
         mailButton.setOnClickListener(new OnClickListener() {
 			
@@ -81,11 +84,11 @@ public class MainActivity extends Activity {
 		});
         
         // Create an instance of Camera
-        mCamera = getCameraInstance();
+//        mCamera = getCameraInstance();
         // Create our Preview view and set it as the content of our activity.
-        mPreview = new CameraPreview(this, mCamera);
+//        mPreview = new CameraPreview(this, mCamera);
         
-        preview.addView(mPreview);
+//        preview.addView(mPreview);
         // Add a listener to the Capture button
         captureButton.setOnClickListener(
             new View.OnClickListener() {
@@ -180,6 +183,7 @@ public class MainActivity extends Activity {
     
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+    	Log.v(getClass().getSimpleName(), "on save instance here!!!");
         outState.putString("mCameraFileName", mCameraFileName);
         super.onSaveInstanceState(outState);
     }
@@ -187,7 +191,23 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        AndroidAuthSession session = mApi.getSession();
+        dropboxAuth();
+        Log.v(getClass().getSimpleName(), "on resumen here!!!");
+        
+        try
+        {
+            //mCamera.setPreviewCallback(null);
+            mCamera = getCameraInstance();
+            //mCamera.setPreviewCallback(null);
+            mPreview = new CameraPreview(this, mCamera);//set preview
+            preview.addView(mPreview);
+        } catch (Exception e){
+            Log.d(TAG, "Error starting camera preview: " + e.getMessage());
+        }
+    }
+
+	private void dropboxAuth() {
+		AndroidAuthSession session = mApi.getSession();
 
         // The next part must be inserted in the onResume() method of the
         // activity from which session.startAuthentication() was called, so
@@ -206,19 +226,27 @@ public class MainActivity extends Activity {
                 Log.i(TAG, "Error authenticating", e);
             }
         }
-    }
+	}
 	
     /** A safe way to get an instance of the Camera object. */
     public Camera getCameraInstance(){
     	releaseCamera();
-        Camera c = null;
-        try {
-            c = Camera.open(1); // attempt to get a Camera instance (the front cammera)
+    	int cameraCount = 0;
+        Camera cam = null;
+        Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+        cameraCount = Camera.getNumberOfCameras();
+        for ( int camIdx = 0; camIdx < cameraCount; camIdx++ ) {
+            Camera.getCameraInfo( camIdx, cameraInfo );
+            if ( cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT  ) {
+                try {
+                    cam = Camera.open( camIdx );
+                } catch (RuntimeException e) {
+                    Log.e(TAG, "Camera failed to open: " + e.getLocalizedMessage());
+                }
+            }
         }
-        catch (Exception e){
-            // Camera is not available (in use or does not exist)
-        }
-        return c; // returns null if camera is unavailable
+         
+        return cam;
     }
     
     private boolean prepareVideoRecorder(){
@@ -264,6 +292,7 @@ public class MainActivity extends Activity {
     
     @Override
     protected void onPause() {
+    	Log.v(getClass().getSimpleName(), "on pause here!!!");
         super.onPause();
         releaseMediaRecorder();       // if you are using MediaRecorder, release it first
         releaseCamera();              // release the camera immediately on pause event
@@ -280,6 +309,7 @@ public class MainActivity extends Activity {
 
     private void releaseCamera(){
         if (mCamera != null){
+        	mPreview.getHolder().removeCallback(mPreview);
             mCamera.release();        // release the camera for other applications
             mCamera = null;
         }
@@ -404,7 +434,26 @@ public class MainActivity extends Activity {
     }
     
     
-    private void sendEmail(){
+    @Override
+	protected void onRestart() {
+		super.onRestart();
+		Log.v(getClass().getSimpleName(), "on restart here!!!");
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		Log.v(getClass().getSimpleName(), "on start here!!!");
+	}
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		Log.v(getClass().getSimpleName(), "on stop here!!!");
+	}
+
+	private void sendEmail(){
     	Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
         emailIntent.setType("video/mp4");
         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] 
@@ -416,7 +465,7 @@ public class MainActivity extends Activity {
         Log.v(getClass().getSimpleName(), "sPhotoUri=" + Uri.parse("file://"+ mCameraFileName));
         emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+ mCameraFileName));
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-        showToast("Sending email");
+//        showToast("Sending email");
     }
     
     
