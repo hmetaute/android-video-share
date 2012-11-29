@@ -135,6 +135,7 @@ public class MainActivity extends Activity {
 				video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 					
 					public void onCompletion(MediaPlayer mp) {
+						System.out.println("Video view complte");
 						preview.removeAllViews();
 						preview.addView(mPreview);
 					}
@@ -267,7 +268,7 @@ public class MainActivity extends Activity {
 //        mMediaRecorder.setVideoSize(320, 240); 
 //        mMediaRecorder.setVideoFrameRate(15); 
         // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
-//        mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
+        //mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
 
         // Step 4: Set output file
         mMediaRecorder.setOutputFile(mCameraFileName);
@@ -292,10 +293,13 @@ public class MainActivity extends Activity {
     
     @Override
     protected void onPause() {
-    	Log.v(getClass().getSimpleName(), "on pause here!!!");
         super.onPause();
+        mCamera.stopPreview();
+//        mCamera.setPreviewCallback(null);
         releaseMediaRecorder();       // if you are using MediaRecorder, release it first
         releaseCamera();              // release the camera immediately on pause event
+        Log.v(getClass().getSimpleName(), "on pause calidoso here!!!");
+        preview.removeAllViews();
     }
 
     private void releaseMediaRecorder(){
@@ -450,6 +454,8 @@ public class MainActivity extends Activity {
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
+		releaseMediaRecorder();       // if you are using MediaRecorder, release it first
+        releaseCamera();              // release the camera immediately on pause event
 		Log.v(getClass().getSimpleName(), "on stop here!!!");
 	}
 
