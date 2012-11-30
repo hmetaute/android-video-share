@@ -21,6 +21,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.mail.send.Mail;
+import com.mail.send.SendEmailAsyncTask;
 
 public class MainActivity extends Activity {
 
@@ -48,11 +49,26 @@ public class MainActivity extends Activity {
         
         mailButton.setOnClickListener(new OnClickListener() {
 			
-			public void onClick(View v) {
-				//sendEmail();
-				sendMailNoIntent();
-				 
-			}
+        	public void onClick(View v) {
+        		//sendEmail();
+        		Mail m = new Mail("elieldavid@gmail.com", "zAP+35eL13");
+
+        		if (BuildConfig.DEBUG) Log.v(SendEmailAsyncTask.class.getName(), "SendEmailAsyncTask()");
+        		String[] toArr = {"hernan.metaute@gmail.com", "hernan.metaute@ceiba.com.co"}; 
+        		m.setTo(toArr); 
+        		m.setFrom("elieldavid@gmail.com"); 
+        		m.setSubject("Hello Mail"); 
+        		m.setBody("Hello... this is the fucking email sent without Intent");
+
+        		try{
+        			m.addAttachment(mCameraFileName);
+        		}catch(Exception e){
+        			showToast("An errror occur while trying to attach the video");
+        		}
+
+        		new SendEmailAsyncTask(m).execute();
+        		
+        	}
 		});
         
         // Create an instance of Camera
@@ -278,28 +294,5 @@ public class MainActivity extends Activity {
 //        showToast("Sending email");
     }
 	
-	
-	private void sendMailNoIntent(){
-		Mail m = new Mail("elieldavid@gmail.com", "zAP+35eL13"); 
-
-		String[] toArr = {"hernan.metaute@gmail.com", "hernan.metaute@ceiba.com.co"}; 
-		m.setTo(toArr); 
-		m.setFrom("elieldavid@gmail.com"); 
-		m.setSubject("Hello Mail"); 
-		m.setBody("Hello... this is the fucking email sent without Intent"); 
-
-		try { 
-			m.addAttachment(mCameraFileName); 
-
-			if(m.send()) { 
-				Toast.makeText(MainActivity.this, "Email was sent successfully.", Toast.LENGTH_LONG).show(); 
-			} else { 
-				Toast.makeText(MainActivity.this, "Email was not sent.", Toast.LENGTH_LONG).show(); 
-			} 
-		} catch(Exception e) { 
-			//Toast.makeText(MailApp.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show(); 
-			Log.e("MailApp", "Could not send email", e); 
-		} 
-	}    
-    
+	   
 }

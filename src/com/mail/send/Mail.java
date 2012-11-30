@@ -156,6 +156,10 @@ public class Mail extends javax.mail.Authenticator {
 	public void setTo(String[] to) {
 		this._to = to;
 	}
+	
+	public String getTo(){
+		return _to.toString();
+	}
 
 	public void setFrom(String from) {
 		this._from = from;
