@@ -51,10 +51,10 @@ public class MainActivity extends Activity {
 			
         	public void onClick(View v) {
         		//sendEmail();
-        		Mail m = new Mail("elieldavid@gmail.com", "zAP+35eL13");
+        		Mail m = new Mail("elieldavid@gmail.com", "mypassword");
 
         		if (BuildConfig.DEBUG) Log.v(SendEmailAsyncTask.class.getName(), "SendEmailAsyncTask()");
-        		String[] toArr = {"hernan.metaute@gmail.com", "hernan.metaute@ceiba.com.co"}; 
+        		String[] toArr = {"debocaenbocaen@gmail.com"}; 
         		m.setTo(toArr); 
         		m.setFrom("elieldavid@gmail.com"); 
         		m.setSubject("Hello Mail"); 
