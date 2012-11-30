@@ -48,11 +48,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int ImageView01=0x7f07000e;
-        public static final int auth_button=0x7f070015;
-        public static final int button_capture=0x7f070018;
-        public static final int button_mail=0x7f070016;
-        public static final int button_play=0x7f070019;
-        public static final int camera_preview=0x7f070017;
+        public static final int button_capture=0x7f070016;
+        public static final int button_mail=0x7f070018;
+        public static final int button_play=0x7f070017;
+        public static final int camera_preview=0x7f070015;
         public static final int fullscreen_content=0x7f070000;
         public static final int fullscreen_content_controls=0x7f070001;
         public static final int imageView1=0x7f070003;
@@ -72,7 +71,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tableRow2=0x7f070009;
         public static final int tableRow3=0x7f07000c;
         public static final int tableRow4=0x7f07000f;
-        public static final int upload_button=0x7f07001a;
         public static final int videosurface=0x7f070014;
     }
     public static final class layout {

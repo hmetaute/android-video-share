@@ -4,19 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <Button 
-      android:id="@+id/auth_button" 
-	  android:text="Link with Dropbox" 
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-	  />
-
-    <Button
-        android:id="@+id/button_mail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Send mail" />
-    
     <FrameLayout
         android:id="@+id/camera_preview"
         android:layout_width="fill_parent"
@@ -44,8 +31,8 @@
              android:text="Play" />
          
          <Button 
-		      android:id="@+id/upload_button" 
-		      android:text="Upload" 
+		      android:id="@+id/button_mail" 
+		      android:text="Send Mail" 
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
 	          android:layout_weight="1"
