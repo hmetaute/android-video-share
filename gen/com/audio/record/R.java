@@ -44,7 +44,22 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int layout01_18=0x7f020012;
         public static final int layout01_19=0x7f020013;
         public static final int layout01_20=0x7f020014;
-        public static final int spacer=0x7f020015;
+        public static final int record_button=0x7f020015;
+        public static final int row_1_column_1=0x7f020016;
+        public static final int row_1_column_2=0x7f020017;
+        public static final int row_1_column_3=0x7f020018;
+        public static final int row_2_column_1=0x7f020019;
+        public static final int row_2_column_3=0x7f02001a;
+        public static final int row_3_column_1=0x7f02001b;
+        public static final int row_3_column_2_central=0x7f02001c;
+        public static final int row_3_column_2_left=0x7f02001d;
+        public static final int row_3_column_2_right=0x7f02001e;
+        public static final int row_3_column_3=0x7f02001f;
+        public static final int row_3_whole=0x7f020020;
+        public static final int row_4_column_1=0x7f020021;
+        public static final int row_4_column_3=0x7f020022;
+        public static final int send_button=0x7f020023;
+        public static final int spacer=0x7f020024;
     }
     public static final class id {
         public static final int ImageView01=0x7f07000e;
