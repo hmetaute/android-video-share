@@ -19,14 +19,14 @@ public class SendEmailAsyncTask extends AsyncTask <Void, Void, Boolean> {
 
 	@Override
 	protected Boolean doInBackground(Void... params) {
-		if (BuildConfig.DEBUG) Log.v(SendEmailAsyncTask.class.getName(), "doInBackground()");
+		Log.i(SendEmailAsyncTask.class.getName(), "doInBackground()");
 		try {
 			if(m.send()) { 
 //				Toast.makeText(context, "Email was sent successfully.", Toast.LENGTH_LONG).show();
-				Log.d(SendEmailAsyncTask.class.getName(), "Email was sent successfully.");
+				Log.i(SendEmailAsyncTask.class.getName(), "Email was sent successfully.");
 			} else { 
 //				Toast.makeText(context, "Email was not sent.", Toast.LENGTH_LONG).show();
-				Log.d(SendEmailAsyncTask.class.getName(), "Email was not sent.");
+				Log.i(SendEmailAsyncTask.class.getName(), "Email was not sent.");
 				return false;
 			}
 			return true;

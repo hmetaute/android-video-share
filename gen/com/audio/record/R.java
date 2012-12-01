@@ -63,9 +63,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int ImageView01=0x7f07000e;
-        public static final int button_capture=0x7f070016;
+        public static final int button_capture=0x7f070017;
         public static final int button_mail=0x7f070018;
-        public static final int button_play=0x7f070017;
+        public static final int button_play=0x7f070016;
         public static final int camera_preview=0x7f070015;
         public static final int fullscreen_content=0x7f070000;
         public static final int fullscreen_content_controls=0x7f070001;

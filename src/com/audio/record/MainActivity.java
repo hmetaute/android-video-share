@@ -2,8 +2,12 @@ package com.audio.record;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
@@ -11,10 +15,12 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.MediaController;
 import android.widget.Toast;
@@ -50,46 +56,59 @@ public class MainActivity extends Activity {
         mailButton.setOnClickListener(new OnClickListener() {
 			
         	public void onClick(View v) {
-        		//sendEmail();
-        		Mail m = new Mail("elieldavid@gmail.com", "mypassword");
+        		AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+        		alert.setTitle("Ingresa tu correo");
+        		alert.setMessage("Ingresa tu correo");
 
-        		if (BuildConfig.DEBUG) Log.v(SendEmailAsyncTask.class.getName(), "SendEmailAsyncTask()");
-        		String[] toArr = {"debocaenbocaen@gmail.com"}; 
-        		m.setTo(toArr); 
-        		m.setFrom("elieldavid@gmail.com"); 
-        		m.setSubject("Hello Mail"); 
-        		m.setBody("Hello... this is the fucking email sent without Intent");
+        		// Set an EditText view to get user input
+        		final EditText input = new EditText(MainActivity.this);
+        		alert.setView(input);
+        		android.content.DialogInterface.OnClickListener okListener = new android.content.DialogInterface.OnClickListener() {
+					
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						Editable value = input.getText();
+		        		Mail m = new Mail("debocaenbocaen@gmail.com", "Tvcamaras1986++");
+						
+						        		if (BuildConfig.DEBUG) Log.v(SendEmailAsyncTask.class.getName(), "SendEmailAsyncTask()");
+						        		String[] toArr = {"debocaenbocaen@gmail.com"};
+//						        		String[] toArr = {"hernan.metaute@gmail.com", "debocaenbocaen@gmail.com"};
+						        		m.setTo(toArr); 
+						        		m.setFrom("debocaenboca@gmail.com"); 
+						        		m.setSubject("Video subido"); 
+						        		m.setBody("Hola, enviar el video al siguiente correo:" + value.toString());
+						
+						        		try{
+						        			m.addAttachment(mCameraFileName);
+						        		}catch(Exception e){
+						        			showToast("An errror occur while trying to attach the video");
+						        		}
+						
+						        		new SendEmailAsyncTask(m).execute();
+						showToast(value.toString());
+						
+					}
+				};
+        		alert.setPositiveButton("Ok", okListener);
+        		
 
-        		try{
-        			m.addAttachment(mCameraFileName);
-        		}catch(Exception e){
-        			showToast("An errror occur while trying to attach the video");
-        		}
+        		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        		  public void onClick(DialogInterface dialog, int whichButton) {
+        		    // Canceled.
+        		  }
+        		});
 
-        		new SendEmailAsyncTask(m).execute();
+        		alert.show();
         		
         	}
 		});
         
-        // Create an instance of Camera
-//        mCamera = getCameraInstance();
-        // Create our Preview view and set it as the content of our activity.
-//        mPreview = new CameraPreview(this, mCamera);
-        
-//        preview.addView(mPreview);
         // Add a listener to the Capture button
         captureButton.setOnClickListener(
             new View.OnClickListener() {
                 public void onClick(View v) {
                     if (isRecording) {
-                        // stop recording and release camera
-                        mMediaRecorder.stop();  // stop the recording
-                        releaseMediaRecorder(); // release the MediaRecorder object
-                        mCamera.lock();         // take camera access back from MediaRecorder
-
-                        // inform the user that recording has stopped
-                        captureButton.setText("Capture");
-                        isRecording = false;
+                        stopRecording();
                     } else {
                         // initialize video camera
                         if (prepareVideoRecorder()) {
@@ -100,6 +119,7 @@ public class MainActivity extends Activity {
                             // inform the user that recording has started
                             captureButton.setText("Listo");
                             isRecording = true;
+                           
                         } else {
                             // prepare didn't work, release the camera
                             releaseMediaRecorder();
@@ -107,6 +127,8 @@ public class MainActivity extends Activity {
                         }
                     }
                 }
+
+				
             }
         );
         
@@ -120,12 +142,17 @@ public class MainActivity extends Activity {
 				video.setMediaController(new MediaController(MainActivity.this));
 				video.requestFocus();
 				video.start();
+				playButton.setEnabled(false);
+				captureButton.setEnabled(false);
+				
 				video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 					
 					public void onCompletion(MediaPlayer mp) {
 						System.out.println("Video view complte");
 						preview.removeAllViews();
 						preview.addView(mPreview);
+						playButton.setEnabled(true);
+						captureButton.setEnabled(true);
 					}
 				});
 				preview.addView(video);
@@ -134,6 +161,18 @@ public class MainActivity extends Activity {
 			}
 		});
     }
+    
+    private void stopRecording() {
+		// stop recording and release camera
+        final Button captureButton = (Button) findViewById(R.id.button_capture);
+		mMediaRecorder.stop();  // stop the recording
+		releaseMediaRecorder(); // release the MediaRecorder object
+		mCamera.lock();         // take camera access back from MediaRecorder
+
+		// inform the user that recording has stopped
+		captureButton.setText("Grabar");
+		isRecording = false;
+	}
     
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -294,5 +333,19 @@ public class MainActivity extends Activity {
 //        showToast("Sending email");
     }
 	
+	private void createStopTimer(){
+		Timer timer = new Timer ();
+		timer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				stopRecording();
+			}
+		}, 10*1000);
+	}
+
+	
 	   
 }
+
