@@ -98,7 +98,7 @@ public class MainActivity extends Activity {
                             mMediaRecorder.start();
 
                             // inform the user that recording has started
-                            captureButton.setText("Stop");
+                            captureButton.setText("Listo");
                             isRecording = true;
                         } else {
                             // prepare didn't work, release the camera

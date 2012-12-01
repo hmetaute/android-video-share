@@ -89,22 +89,22 @@
                 android:orientation="horizontal" >
 
                 <Button
-                    android:id="@+id/button_capture"
-                    android:layout_width="316dp"
-                    android:layout_height="75dp"
-                    android:text="Capture" />
-
-                <Button
                     android:id="@+id/button_play"
                     android:layout_width="442dp"
                     android:layout_height="75dp"
-                    android:text="Play" />
+                    android:text="Ver" />
+
+                <Button
+                    android:id="@+id/button_capture"
+                    android:layout_width="350dp"
+                    android:layout_height="75dp"
+                    android:text="Grabar" />
 
                 <Button
                     android:id="@+id/button_mail"
-                    android:layout_width="513dp"
+                    android:layout_width="480dp"
                     android:layout_height="75dp"
-                    android:text="Send Mail" />
+                    android:text="Compartir" />
             </LinearLayout>
 
         </TableRow>
