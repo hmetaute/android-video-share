@@ -52,6 +52,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
 
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="280dp"
+                    android:layout_height="500dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/row_2_column_1" />
+
                 <FrameLayout
                     android:id="@+id/camera_preview"
                     android:layout_width="fill_parent"
@@ -59,6 +66,13 @@
                     android:layout_weight="1" >
 
                 </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="230dp"
+                    android:layout_height="500dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/row_2_column_3" />
 
             </LinearLayout>
 
