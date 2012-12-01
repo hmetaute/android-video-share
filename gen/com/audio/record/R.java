@@ -44,63 +44,102 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int layout01_18=0x7f020012;
         public static final int layout01_19=0x7f020013;
         public static final int layout01_20=0x7f020014;
-        public static final int record_button=0x7f020015;
-        public static final int row_1_column_1=0x7f020016;
-        public static final int row_1_column_2=0x7f020017;
-        public static final int row_1_column_3=0x7f020018;
-        public static final int row_2_column_1=0x7f020019;
-        public static final int row_2_column_3=0x7f02001a;
-        public static final int row_3_column_1=0x7f02001b;
-        public static final int row_3_column_2_central=0x7f02001c;
-        public static final int row_3_column_2_left=0x7f02001d;
-        public static final int row_3_column_2_right=0x7f02001e;
-        public static final int row_3_column_3=0x7f02001f;
-        public static final int row_3_whole=0x7f020020;
-        public static final int row_4_column_1=0x7f020021;
-        public static final int row_4_column_3=0x7f020022;
-        public static final int send_button=0x7f020023;
-        public static final int spacer=0x7f020024;
+        public static final int layout02_01=0x7f020015;
+        public static final int layout02_02=0x7f020016;
+        public static final int layout02_03=0x7f020017;
+        public static final int layout02_04=0x7f020018;
+        public static final int layout02_05=0x7f020019;
+        public static final int layout02_06=0x7f02001a;
+        public static final int layout02_07=0x7f02001b;
+        public static final int layout02_08=0x7f02001c;
+        public static final int layout02_09=0x7f02001d;
+        public static final int layout02_10=0x7f02001e;
+        public static final int layout02_11=0x7f02001f;
+        public static final int layout02_12=0x7f020020;
+        public static final int layout02_13=0x7f020021;
+        public static final int record_button=0x7f020022;
+        public static final int row_1_column_1=0x7f020023;
+        public static final int row_1_column_2=0x7f020024;
+        public static final int row_1_column_3=0x7f020025;
+        public static final int row_2_column_1=0x7f020026;
+        public static final int row_2_column_3=0x7f020027;
+        public static final int row_3_column_1=0x7f020028;
+        public static final int row_3_column_2_central=0x7f020029;
+        public static final int row_3_column_2_left=0x7f02002a;
+        public static final int row_3_column_2_right=0x7f02002b;
+        public static final int row_3_column_3=0x7f02002c;
+        public static final int row_3_whole=0x7f02002d;
+        public static final int row_4_column_1=0x7f02002e;
+        public static final int row_4_column_3=0x7f02002f;
+        public static final int send_button=0x7f020030;
+        public static final int spacer=0x7f020031;
     }
     public static final class id {
-        public static final int ImageView01=0x7f07000e;
-        public static final int button_capture=0x7f070017;
-        public static final int button_mail=0x7f070018;
-        public static final int button_play=0x7f070016;
-        public static final int camera_preview=0x7f070015;
-        public static final int fullscreen_content=0x7f070000;
-        public static final int fullscreen_content_controls=0x7f070001;
-        public static final int imageView1=0x7f070003;
-        public static final int imageView10=0x7f070010;
-        public static final int imageView11=0x7f070011;
-        public static final int imageView2=0x7f070004;
-        public static final int imageView3=0x7f070005;
-        public static final int imageView4=0x7f070006;
-        public static final int imageView5=0x7f070007;
-        public static final int imageView6=0x7f070008;
-        public static final int imageView7=0x7f07000a;
-        public static final int imageView8=0x7f07000b;
-        public static final int imageView9=0x7f07000d;
-        public static final int record=0x7f070012;
-        public static final int stop=0x7f070013;
-        public static final int tableRow1=0x7f070002;
-        public static final int tableRow2=0x7f070009;
-        public static final int tableRow3=0x7f07000c;
-        public static final int tableRow4=0x7f07000f;
-        public static final int videosurface=0x7f070014;
+        public static final int ImageView01=0x7f080016;
+        public static final int TableLayout1=0x7f080003;
+        public static final int button_capture=0x7f08001d;
+        public static final int button_mail=0x7f08001e;
+        public static final int button_play=0x7f08001c;
+        public static final int camera_preview=0x7f08001b;
+        public static final int email=0x7f080008;
+        public static final int fullscreen_content=0x7f080014;
+        public static final int fullscreen_content_controls=0x7f080015;
+        public static final int imageView1=0x7f080005;
+        public static final int imageView10=0x7f080010;
+        public static final int imageView11=0x7f080011;
+        public static final int imageView2=0x7f080007;
+        public static final int imageView3=0x7f080009;
+        public static final int imageView4=0x7f08000c;
+        public static final int imageView5=0x7f08000d;
+        public static final int imageView6=0x7f080013;
+        public static final int imageView7=0x7f080012;
+        public static final int imageView8=0x7f08000f;
+        public static final int imageView9=0x7f08000e;
+        public static final int login_form=0x7f080002;
+        public static final int login_status=0x7f080000;
+        public static final int login_status_message=0x7f080001;
+        public static final int menu_forgot_password=0x7f08001f;
+        public static final int record=0x7f080018;
+        public static final int sign_in_button=0x7f08000a;
+        public static final int stop=0x7f080019;
+        public static final int tableRow1=0x7f080004;
+        public static final int tableRow2=0x7f080006;
+        public static final int tableRow3=0x7f08000b;
+        public static final int tableRow4=0x7f080017;
+        public static final int videosurface=0x7f08001a;
     }
     public static final class layout {
-        public static final int activity_record_playback=0x7f030000;
-        public static final int audiorecorderlayout=0x7f030001;
-        public static final int main=0x7f030002;
-        public static final int recording_screen=0x7f030003;
-        public static final int videorecorderlayout=0x7f030004;
+        public static final int activity_mail=0x7f030000;
+        public static final int activity_record_playback=0x7f030001;
+        public static final int audiorecorderlayout=0x7f030002;
+        public static final int main=0x7f030003;
+        public static final int recording_screen=0x7f030004;
+        public static final int videorecorderlayout=0x7f030005;
+    }
+    public static final class menu {
+        public static final int activity_mail=0x7f070000;
     }
     public static final class string {
+        public static final int action_sign_in_register=0x7f05000b;
+        public static final int action_sign_in_short=0x7f05000c;
+        public static final int action_submit=0x7f050006;
         public static final int app_name=0x7f050001;
         public static final int dummy_content=0x7f050004;
+        public static final int error_field_required=0x7f050012;
+        public static final int error_incorrect_password=0x7f050011;
+        public static final int error_invalid_email=0x7f05000f;
+        public static final int error_invalid_password=0x7f050010;
         public static final int hello=0x7f050000;
+        public static final int login_progress_signing_in=0x7f05000e;
+        public static final int mail_was_not_sent=0x7f050007;
+        public static final int menu_forgot_password=0x7f05000d;
+        /**  Strings related to login 
+         */
+        public static final int prompt_email=0x7f050009;
+        public static final int prompt_password=0x7f05000a;
         public static final int recod=0x7f050003;
         public static final int stahp=0x7f050002;
+        public static final int title_activity_mail=0x7f050008;
         public static final int title_activity_record_playback=0x7f050005;
     }
     public static final class style {
@@ -110,8 +149,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**  Backward-compatible version of ?android:attr/buttonBarButtonStyle 
          */
         public static final int ButtonBarButton=0x7f060002;
-        public static final int FullscreenActionBarStyle=0x7f060003;
+        public static final int FullscreenActionBarStyle=0x7f060004;
         public static final int FullscreenTheme=0x7f060000;
+        public static final int LoginFormContainer=0x7f060003;
     }
     public static final class styleable {
         /** 

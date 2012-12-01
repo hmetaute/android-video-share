@@ -7,5 +7,7 @@
     <string name="recod">record!</string>
     <string name="dummy_content">Copntenido\nmuestra</string>
     <string name="title_activity_record_playback">RecordPlaybackActivity</string>
+    <string name="action_submit">Submit</string>
+    <string name="mail_was_not_sent">El correo no pudo ser enviado</string>
 
 </resources>

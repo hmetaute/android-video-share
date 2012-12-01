@@ -54,6 +54,17 @@ public class MainActivity extends Activity {
         preview = (FrameLayout) findViewById(R.id.camera_preview);
         
         mailButton.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this,MailActivity.class);
+				intent.putExtra(MailActivity.FILENAME, mCameraFileName);
+				
+			}
+        	
+        });
+        /*
+        mailButton.setOnClickListener(new OnClickListener() {
 			
         	public void onClick(View v) {
         		AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
@@ -101,7 +112,7 @@ public class MainActivity extends Activity {
         		alert.show();
         		
         	}
-		});
+		});*/
         
         // Add a listener to the Capture button
         captureButton.setOnClickListener(
